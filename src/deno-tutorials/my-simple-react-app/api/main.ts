@@ -1,6 +1,7 @@
 import { Application, Router } from "@oak/oak"; // Importing Application and Router from oak
 import { oakCors } from "@tajpouria/cors"; // Importing oakCors from @tajpouria/cors
 import data from "./data.json" with { type: "json" }; // Importing data from data.json
+import routeStaticFilesFrom from "./routeStaticFilesFrom.ts";
 
 const router = new Router(); // Creating a new Router
 
@@ -32,5 +33,9 @@ const app = new Application(); // Creating a new Application
 app.use(oakCors()); // Using oakCors middleware
 app.use(router.routes()); // Using router routes
 app.use(router.allowedMethods()); // Using router allowedMethods
+app.use(routeStaticFilesFrom([
+    `${Deno.cwd()}/dist`,
+    `${Deno.cwd()}/public`,
+]));
 
 await app.listen({ port: 8000 }); // Listening on port 8000

@@ -5,3 +5,4 @@ This is a repository containing multiple, disparate projects that I created for 
 ## Table of Contents
 
 - [1. Example Project](src/example-project/README.md)
+- [2. Deno Tutorials](src/deno-tutorials/README.md)
